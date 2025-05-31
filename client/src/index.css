@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --background: 240 10% 98%; /* #F0F8FF */
+  --foreground: 210 11% 18%; /* #2F2F2F */
+  --muted: 210 11% 96%; /* #F5F7FA */
+  --muted-foreground: 210 7% 45%; /* #737B85 */
+  --popover: 0 0% 100%;
+  --popover-foreground: 210 11% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 210 11% 18%;
+  --border: 210 11% 89%; /* #E3E7EC */
+  --input: 210 11% 89%;
+  --primary: 280 100% 85%; /* #E8B4FF */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 200 100% 85%; /* #B4E8FF */
+  --secondary-foreground: 210 11% 18%;
+  --accent: 40 100% 85%; /* #FFE4B4 */
+  --accent-foreground: 210 11% 18%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 210 11% 18%;
+  --radius: 0.75rem;
+  
+  /* Custom quote app colors */
+  --lavender: 280 100% 85%; /* #E8B4FF */
+  --sky-blue: 200 100% 85%; /* #B4E8FF */
+  --peach: 40 100% 85%; /* #FFE4B4 */
+  --charcoal: 210 11% 18%; /* #2F2F2F */
+  --deep-purple: 240 42% 14%; /* #1A1A2E */
+  --light-pastel: 210 100% 97%; /* #F0F8FF */
+  --lavender-pastel: 240 67% 94%; /* #E6E6FA */
+}
+
+.dark {
+  --background: 240 42% 14%; /* #1A1A2E */
+  --foreground: 0 0% 98%;
+  --muted: 240 20% 20%;
+  --muted-foreground: 240 5% 65%;
+  --popover: 240 42% 14%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 42% 14%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 20% 25%;
+  --input: 240 20% 25%;
+  --primary: 280 100% 85%; /* #E8B4FF */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 20% 25%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 20% 25%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 5% 84%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(-45deg, hsl(var(--light-pastel)), hsl(var(--lavender-pastel)), hsl(var(--lavender)), hsl(var(--sky-blue)));
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+  }
+
+  .dark .gradient-bg {
+    background: linear-gradient(-45deg, hsl(var(--background)), hsl(240 30% 18%), hsl(240 35% 22%), hsl(240 40% 26%));
+    background-size: 400% 400%;
+  }
+
+  .quote-card {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .dark .quote-card {
+    background: rgba(26, 26, 46, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .quote-transition {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer utilities {
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(1deg); }
+    66% { transform: translateY(5px) rotate(-1deg); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-gradient {
+    animation: gradient 8s ease infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+}
