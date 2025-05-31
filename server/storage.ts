@@ -42,7 +42,9 @@ export class MemStorage implements IStorage {
       createdAt: new Date(),
     };
     this.quotes.set(id, quote);
-    this.stats.favoriteQuotes++;
+    if (this.stats) {
+      this.stats.favoriteQuotes++;
+    }
     return quote;
   }
 
@@ -50,7 +52,9 @@ export class MemStorage implements IStorage {
     const quote = this.quotes.get(id);
     if (quote) {
       this.quotes.delete(id);
-      this.stats.favoriteQuotes--;
+      if (this.stats) {
+        this.stats.favoriteQuotes--;
+      }
     }
   }
 
